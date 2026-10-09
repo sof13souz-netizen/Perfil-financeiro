@@ -1,0 +1,219 @@
+/* Remove margens padrão e faz padding/borda entrarem no tamanho dos elementos. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Aparência geral da página e cores próximas ao restante do CredMais. */
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f9fd;
+    color: #19324a;
+}
+
+/* Barra superior que contém o logo e o menu. */
+.cabecalho {
+    min-height: 80px;
+    padding: 15px 5%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    box-shadow: 0 2px 10px rgba(20, 60, 100, 0.08);
+}
+
+/* Limita o tamanho do logo para ele não ficar muito grande. */
+.logo img {
+    width: 145px;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+/* Coloca os links do menu em linha e permite quebra quando faltar espaço. */
+.cabecalho nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Aparência dos links de navegação. */
+.cabecalho nav a {
+    color: #19324a;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Destaca o link ativo e o link sobre o qual o mouse está. */
+.cabecalho nav a:hover,
+.cabecalho nav a.ativo {
+    color: #1769d2;
+    font-weight: bold;
+}
+
+/* Centraliza o conteúdo e limita sua largura máxima. */
+.conteudo {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.conteudo h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+/* Textos auxiliares em cinza. */
+.descricao,
+.subtitulo {
+    color: #6c7f91;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Duas colunas em telas grandes: financeiro e dados pessoais. */
+.cartoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+    align-items: start;
+}
+
+/* Aparência dos cartões brancos. */
+.cartao {
+    background: #fff;
+    border: 1px solid rgba(23, 105, 210, 0.13);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(20, 60, 100, 0.07);
+}
+
+.cartao h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+/* Organiza cada formulário verticalmente. */
+.cartao form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 22px;
+}
+
+/* Rótulos que explicam cada campo. */
+.cartao label {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+/* Estilo comum para caixas de texto e listas de seleção. */
+.cartao input,
+.cartao select {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px;
+    border: 1px solid #d5dfeb;
+    border-radius: 7px;
+    font-size: 14px;
+    color: #19324a;
+    background: #fff;
+}
+
+/* Mostra qual campo está selecionado. :focus é um estado CSS. */
+.cartao input:focus,
+.cartao select:focus {
+    outline: none;
+    border-color: #1769d2;
+    box-shadow: 0 0 0 3px rgba(23, 105, 210, 0.10);
+}
+
+/* Aparência dos campos desativados, como o ID e os campos financeiros. */
+.cartao input:disabled {
+    background: #f0f3f7;
+    cursor: not-allowed;
+}
+
+.cartao h3 {
+    margin-top: 25px;
+    font-size: 17px;
+}
+
+.aviso {
+    color: #6c7f91;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+/* Botão azul de salvar. */
+.cartao button {
+    min-height: 45px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 7px;
+    background: #1769d2;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Muda a cor do botão ao passar o mouse, exceto quando está desativado. */
+.cartao button:hover:not(:disabled) {
+    background: #0b3d91;
+}
+
+/* Indica que um botão desativado não pode ser usado. */
+.cartao button:disabled {
+    background: #aab8c7;
+    cursor: not-allowed;
+}
+
+/* Caixa para mensagens enviadas pelas rotas Flask. */
+.mensagem {
+    padding: 12px 15px;
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid #d5dfeb;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+/* Em telas menores, menu fica em coluna e os cartões ficam um abaixo do outro. */
+@media (max-width: 800px) {
+    .cabecalho {
+        flex-direction: column;
+    }
+
+    .cabecalho nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .cartoes {
+        grid-template-columns: 1fr;
+    }
+
+    .conteudo {
+        margin: 25px auto;
+    }
+}
+
+/* Ajustes extras para celulares estreitos. */
+@media (max-width: 480px) {
+    .cartao {
+        padding: 20px;
+    }
+
+    .cabecalho nav a {
+        font-size: 13px;
+    }
+
+    .conteudo h1 {
+        font-size: 24px;
+    }
+}
